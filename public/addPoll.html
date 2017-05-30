@@ -1,21 +1,24 @@
 <html>
 <head>
   <title>Create a New Poll</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <h1>Create a New Poll</h1>
-  <form action="/createPoll" method="post">
-    What is your Question? <input type="text"></input>
-    <br>
-    <br>
-    Answer 1: <input type="text"></input>
-    <br>
-    Answer 2: <input type="text"></input>
-    <br>
-    Answer 3: <input type="text"></input>
-    <br>
-    <br>
-    <input type="submit">
-  </form>
+  <h1 id="page-title">Create a New Poll</h1>
+  <div class="form">
+	  <form action="/createPoll" method="post">
+	    What is your Question? <input id="poll-question" type="text"></input>
+	    <br>
+	    <br>
+	    Answer 1: <input type="text"></input>
+	    <br>
+	    Answer 2: <input type="text"></input>
+	    <br>
+	    Answer 3: <input type="text"></input>
+	    <br>
+	    <br>
+	    <input type="submit">
+	  </form>
+  </div>
 </body>
 </html>

@@ -19,6 +19,8 @@ MongoClient.connect((dbURL || 'mongodb://localhost:27017/votingdb'), function(er
 		next();
 	});
 
+	app.use(express.static('public'));
+
 	routes(app, process.env);
 
 	app.set('port', (process.env.PORT || 8080));
