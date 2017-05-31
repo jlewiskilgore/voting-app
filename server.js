@@ -3,10 +3,11 @@ var routes = require('./src/routes/routes.js');
 
 var app = express();
 
-var MongoClient = require('mongodb').MongoClient;
+//var MongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 var dbURL = process.env.MONGOLAB_URL;
 
-MongoClient.connect((dbURL || 'mongodb://localhost:27017/votingdb'), function(err, db) {
+mongoose.connect((dbURL || 'mongodb://localhost:27017/votingdb'), function(err, db) {
 	if(!err) {
 		console.log("Connected to database.");
 	}

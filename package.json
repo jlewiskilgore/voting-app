@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
-    "mongodb": "^2.2.27"
+    "mongodb": "^2.2.27",
+    "mongoose": "^4.10.4"
   },
   "main": "server.js",
   "devDependencies": {},
