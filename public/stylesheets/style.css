@@ -2,6 +2,10 @@ body {
 	background-color: steelblue;
 }
 
+#create-poll-button {
+	text-align: center;
+}
+
 #page-title {
 	text-align: center;
 }
