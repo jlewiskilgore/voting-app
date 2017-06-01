@@ -5,15 +5,18 @@ var app = express();
 
 //var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
-var dbURL = process.env.MONGOLAB_URL;
+var dbURL = process.env.MONGOLAB_URI;
 
-mongoose.connect((dbURL || 'mongodb://localhost:27017/votingdb'), function(err, db) {
-	if(!err) {
-		console.log("Connected to database.");
-	}
-	else if(err) {
-		console.log(err);
-	}
+mongoose.connect(dbURL || 'mongodb://localhost/votingdb');
+
+var db = mongoose.connection;
+
+db.on('error', function(err) {
+	console.log(err);
+})
+
+db.once('open', function() {
+	console.log('Connected to database.');
 
 	app.use(function(req, res, next) {
 		req.db = db;
@@ -27,6 +30,6 @@ mongoose.connect((dbURL || 'mongodb://localhost:27017/votingdb'), function(err, 
 	app.set('port', (process.env.PORT || 8080));
 
 	app.listen(process.env.PORT || 8080, function() {
-		console.log("Server Listening on Port 8080");
+		console.log('Server Listening on Port 8080');
 	});
 });

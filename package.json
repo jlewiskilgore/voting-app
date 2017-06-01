@@ -9,6 +9,7 @@
   "author": "J Lewis Kilgore",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "mongodb": "^2.2.27",
     "mongoose": "^4.10.4"
