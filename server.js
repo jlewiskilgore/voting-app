@@ -25,6 +25,8 @@ db.once('open', function() {
 
 	app.use(express.static('public'));
 
+	app.set('view engine', 'ejs');
+
 	routes(app, process.env);
 
 	app.set('port', (process.env.PORT || 8080));

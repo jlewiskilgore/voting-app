@@ -8,11 +8,11 @@ module.exports = function(app, env) {
 	app.use(bodyParser.json());
 
 	app.get('/', function(req, res) {
-		res.sendFile(path.join(__dirname + '/../../public/index.html'));
+		res.render('pages/index');
 	});
 
 	app.get('/createPoll', function(req, res) {
-		res.sendFile(path.join(__dirname + '/../../public/addPoll.html'));
+		res.render('pages/addPoll');
 	});
 
 	app.post('/createPoll', function(req, res) {
