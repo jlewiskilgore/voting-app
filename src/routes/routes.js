@@ -8,7 +8,12 @@ module.exports = function(app, env) {
 	app.use(bodyParser.json());
 
 	app.get('/', function(req, res) {
-		res.render('pages/index');
+		var db = req.db;
+		var polls = db.collection('polls');
+
+		polls.find().limit(25).toArray(function(error, result) {
+			res.render('pages/index', { pollList: result });
+		});
 	});
 
 	app.get('/createPoll', function(req, res) {
@@ -44,14 +49,16 @@ module.exports = function(app, env) {
 			choiceCounts: countArr
 		});
 
-		newPoll.save(function(err, data) {
-			if(err) {
-				console.log(err);
-			}
-			else {
-				console.log("New Poll Saved!");
-			}
-		});
+		if(pollQuestion && pollQuestion.trim() != '') {
+			newPoll.save(function(err, data) {
+				if(err) {
+					console.log(err);
+				}
+				else {
+					console.log("New Poll Saved!");
+				}
+			});
+		}
 
 	});
 

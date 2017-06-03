@@ -10,5 +10,14 @@
   <div id="create-poll-button">
     <button onclick="window.location.href='/createPoll'">Create a New Poll</a>
   </div>
+  <br>
+  <br>
+  <div id="poll-list">
+    <% for (var i=0; i < pollList.length; i++) { %>
+    	<p>
+    	  <%= pollList[i].question %>
+    	</p>
+    <% } %>
+  </div>
 </body>
 </html>
