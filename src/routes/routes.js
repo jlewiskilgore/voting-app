@@ -64,8 +64,24 @@ module.exports = function(app, env) {
 	});
 
 	app.post('/viewPoll', function(req, res) {
-		console.log("view poll...");
-		console.log(req.body.question);
+		var choices = req.body.choices.split(',');
+
+		console.log(choices);
+
+		res.render('pages/viewPoll', 
+			{ 
+				pollId: req.body._id,
+				pollQuestion: req.body.question,
+				pollChoices: choices
+			});
+	});
+
+	app.post('/answerPoll', function(req, res) {
+		var db = req.db;
+		var polls = db.collection('polls');
+
+		//polls.find({"_id": ObjectId(req.body.pollId)});
+
 	});
 
 	app.get('*', function(req, res) {

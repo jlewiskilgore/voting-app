@@ -9,6 +9,13 @@
   <br>
   <br>
   <div id="view-poll">
+    <h2><%= pollQuestion %></h2>
+    <% for (var i=0; i < pollChoices.length; i++) { %>
+      <form action="/answerPoll" method="post">
+        <input type="submit" value="<%= pollChoices[i] %>">
+      </form>
+      <br>
+    <% } %>
   </div>
 </body>
 </html>

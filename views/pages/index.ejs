@@ -15,7 +15,9 @@
   <div id="poll-list">
     <% for (var i=0; i < pollList.length; i++) { %>
       <form action="/viewPoll" method="post">
+        <input type="hidden" name="id" value="<%= pollList[i]._id %>">
         <input type="hidden" name="question" value="<%= pollList[i].question %>">
+        <input type="hidden" name="choices" value="<%= pollList[i].choices %>">
     	  <input type="submit" value="<%= pollList[i].question %>">
       </form>
     <br>
