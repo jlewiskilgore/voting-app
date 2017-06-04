@@ -63,8 +63,9 @@ module.exports = function(app, env) {
 
 	});
 
-	app.get('/viewPoll', function(req, res) {
+	app.post('/viewPoll', function(req, res) {
 		console.log("view poll...");
+		console.log(req.body.question);
 	});
 
 	app.get('*', function(req, res) {
