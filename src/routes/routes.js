@@ -56,6 +56,7 @@ module.exports = function(app, env) {
 				}
 				else {
 					console.log("New Poll Saved!");
+					res.redirect('/');
 				}
 			});
 		}
