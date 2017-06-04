@@ -13,11 +13,14 @@
   <br>
   <br>
   <div id="poll-list">
+  	<form action="/viewPoll" method="get">
     <% for (var i=0; i < pollList.length; i++) { %>
-    	<p>
+    	<button onClick="console.log('hello world')">
     	  <%= pollList[i].question %>
-    	</p>
+    	</button>
+    	<br>
     <% } %>
+    </form>
   </div>
 </body>
 </html>

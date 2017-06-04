@@ -63,6 +63,10 @@ module.exports = function(app, env) {
 
 	});
 
+	app.get('/viewPoll', function(req, res) {
+		console.log("view poll...");
+	});
+
 	app.get('*', function(req, res) {
 		res.redirect('/');
 	});
