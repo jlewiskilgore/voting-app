@@ -1,6 +1,7 @@
 var path = require('path');
 var bodyParser = require('body-parser');
 var Poll = require('../../models/poll.js');
+var ObjectId = require('mongodb').ObjectId;
 
 module.exports = function(app, env) {
 	app.use(bodyParser.urlencoded({ extended: true }));
@@ -66,11 +67,9 @@ module.exports = function(app, env) {
 	app.post('/viewPoll', function(req, res) {
 		var choices = req.body.choices.split(',');
 
-		console.log(choices);
-
 		res.render('pages/viewPoll', 
 			{ 
-				pollId: req.body._id,
+				pollId: req.body.id,
 				pollQuestion: req.body.question,
 				pollChoices: choices
 			});
@@ -79,8 +78,20 @@ module.exports = function(app, env) {
 	app.post('/answerPoll', function(req, res) {
 		var db = req.db;
 		var polls = db.collection('polls');
+		
+		var pollId = req.body.pollId;
+		var choiceCountArr;
+		var selectedChoice = req.body.choiceIndex;
 
-		//polls.find({"_id": ObjectId(req.body.pollId)});
+		polls.findOne({ "_id": ObjectId(pollId) }, function(err, result) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				choiceCountArr = result.choiceCounts;
+				choiceCountArr[selectedChoice] += 1;
+			}
+		})
 
 	});
 

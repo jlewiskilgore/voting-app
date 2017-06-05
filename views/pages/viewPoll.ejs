@@ -12,6 +12,8 @@
     <h2><%= pollQuestion %></h2>
     <% for (var i=0; i < pollChoices.length; i++) { %>
       <form action="/answerPoll" method="post">
+        <input type="hidden" name="pollId" value="<%= pollId %>">
+        <input type="hidden" name="choiceIndex" value="<%= i %>">
         <input type="submit" value="<%= pollChoices[i] %>">
       </form>
       <br>
