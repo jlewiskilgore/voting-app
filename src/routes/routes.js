@@ -90,6 +90,12 @@ module.exports = function(app, env) {
 			else {
 				choiceCountArr = result.choiceCounts;
 				choiceCountArr[selectedChoice] += 1;
+				polls.update(
+					{ "_id": ObjectId(pollId) },
+					{ $set: { "choiceCounts": choiceCountArr } },
+					{ upsert: true}
+				);
+				res.redirect('/'); // TODO: Change to view results page
 			}
 		})
 
