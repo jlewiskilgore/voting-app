@@ -95,11 +95,15 @@ module.exports = function(app, env) {
 					{ $set: { "choiceCounts": choiceCountArr } },
 					{ upsert: true}
 				);
-				res.redirect('/'); // TODO: Change to view results page
+				res.redirect('/viewResults/' + pollId); // TODO: Change to view results page
 			}
-		})
-
+		});
 	});
+
+	app.get('/viewResults/:pollId', function(req, res) {
+		console.log('view poll results...');
+		res.render('pages/viewResults');
+	})
 
 	app.get('*', function(req, res) {
 		res.redirect('/');
