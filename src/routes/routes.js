@@ -101,9 +101,20 @@ module.exports = function(app, env) {
 	});
 
 	app.get('/viewResults/:pollId', function(req, res) {
-		console.log('view poll results...');
-		res.render('pages/viewResults');
-	})
+		var db = req.db;
+		var polls = db.collection('polls');
+
+		var pollId = req.params.pollId;
+
+		polls.findOne({ "_id": ObjectId(pollId) }, function(err, result) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				res.render('pages/viewResults', { pollData: result });
+			}
+		});
+	});
 
 	app.get('*', function(req, res) {
 		res.redirect('/');
