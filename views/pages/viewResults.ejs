@@ -2,14 +2,52 @@
 <head>
   <title>Poll Results</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(resultsPieChart);
+
+    function resultsPieChart() {
+      var data = new google.visualization.DataTable();
+
+      var choices = "<%-choices%>";
+      choices = choices.split(',');
+      var choiceCounts = [<%-choiceCounts%>];
+      var question = "<%-question%>";
+
+      data.addColumn('string', 'Choice');
+      data.addColumn('number', 'Count');
+
+      var choiceDataRowArr = [];
+      var choiceDataRow = [];
+
+      for(var i=0; i < choiceCounts.length; i++) {
+        choiceDataRow = [];
+        choiceDataRow.push(choices[i]);
+        choiceDataRow.push(choiceCounts[i]);
+        console.log(choiceDataRow);
+        //choiceDataRowArr.push(choiceDataRow);
+        data.addRow(choiceDataRow);
+      }
+
+      var options = {
+        'title': question,
+        'width': 400,
+        'height': 400
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('poll-results'));
+
+      chart.draw(data, options);
+    }
+  </script>
 </head>
 <body>
-  <h1 id="page-title">Poll Results</h1>
   <br>
   <br>
   <br>
-  <div id="poll-results">
- 
+  <div id='poll-results'> 
   </div>
 </body>
 </html>

@@ -111,7 +111,7 @@ module.exports = function(app, env) {
 				console.log(err);
 			}
 			else {
-				res.render('pages/viewResults', { pollData: result });
+				res.render('pages/viewResults', { question: result.question, choices: result.choices, choiceCounts: result.choiceCounts });
 			}
 		});
 	});
