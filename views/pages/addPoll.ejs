@@ -2,6 +2,24 @@
 <head>
   <title>Create a New Poll</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script type="text/javascript">
+    function addNewAnswer() {
+    	console.log('adding new field...');
+    	var addPollForm = document.getElementById("poll-answers");
+
+    	var additionalInput = document.createElement("input");
+    	additionalInput.type = "text";
+
+    	var lineBreak = document.createElement("br");
+
+    	var inputLabel = document.createElement("label");
+    	inputLabel.innerHTML = "Answer: ";
+
+    	addPollForm.appendChild(inputLabel);
+    	addPollForm.appendChild(additionalInput);
+    	addPollForm.appendChild(lineBreak);
+    }
+  </script>
 </head>
 <body>
   <h1 id="page-title">Create a New Poll</h1>
@@ -10,12 +28,15 @@
 	    What is your Question? <input id="poll-question" type="text" name="question"></input>
 	    <br>
 	    <br>
-	    Answer 1: <input type="text" name="answer_1"></input>
-	    <br>
-	    Answer 2: <input type="text" name="answer_2"></input>
-	    <br>
-	    Answer 3: <input type="text" name="answer_3"></input>
-	    <br>
+	    <div id="poll-answers">
+		  Answer 1: <input type="text" name="answer_1"></input>
+		  <br>
+		  Answer 2: <input type="text" name="answer_2"></input>
+		  <br>
+		  Answer 3: <input type="text" name="answer_3"></input>
+		  <br>
+	    </div>
+	    <input type="button" onclick="addNewAnswer()" value="add"></input>
 	    <br>
 	    <input type="submit">
 	  </form>

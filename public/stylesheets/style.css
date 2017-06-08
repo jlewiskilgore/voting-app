@@ -10,6 +10,17 @@ body {
 	text-align: center;
 }
 
+#poll-list, #view-poll {
+	display: block;
+	text-align: center;
+}
+
+#poll-list input {
+	height: 50px;
+	width: 400px;
+	border-radius: 10px;
+}
+
 div.form {
 	display: block;
 	text-align: center;
