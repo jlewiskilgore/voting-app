@@ -3,21 +3,29 @@
   <title>Create a New Poll</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script type="text/javascript">
+    var answerNum = 2;
+
     function addNewAnswer() {
     	console.log('adding new field...');
     	var addPollForm = document.getElementById("poll-answers");
 
     	var additionalInput = document.createElement("input");
     	additionalInput.type = "text";
+    	additionalInput.name = "answer_" + answerNum;
 
     	var lineBreak = document.createElement("br");
 
     	var inputLabel = document.createElement("label");
-    	inputLabel.innerHTML = "Answer: ";
+    	inputLabel.innerHTML = "Answer " + answerNum + ": ";
 
     	addPollForm.appendChild(inputLabel);
     	addPollForm.appendChild(additionalInput);
     	addPollForm.appendChild(lineBreak);
+
+    	var numAnswers = document.getElementById("num-answers");
+    	numAnswers.value = answerNum;
+
+    	answerNum++;
     }
   </script>
 </head>
@@ -29,15 +37,12 @@
 	    <br>
 	    <br>
 	    <div id="poll-answers">
-		  Answer 1: <input type="text" name="answer_1"></input>
-		  <br>
-		  Answer 2: <input type="text" name="answer_2"></input>
-		  <br>
-		  Answer 3: <input type="text" name="answer_3"></input>
+		  <label>Answer 1: </label><input type="text" name="answer_1"></input>
 		  <br>
 	    </div>
 	    <input type="button" onclick="addNewAnswer()" value="add"></input>
 	    <br>
+	    <input id="num-answers" type="hidden" name="numAnswers" value="1"></input>
 	    <input type="submit">
 	  </form>
   </div>

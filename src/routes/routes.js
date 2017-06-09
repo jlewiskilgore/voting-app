@@ -30,17 +30,15 @@ module.exports = function(app, env) {
 		var choiceArr = [];
 		var countArr = [];
 
-		if(req.body.answer_1) {
-			choiceArr.push(req.body.answer_1);
-			countArr.push(0);
-		}
-		if(req.body.answer_2) {
-			choiceArr.push(req.body.answer_2);
-			countArr.push(0);
-		}
-		if(req.body.answer_3) {
-			choiceArr.push(req.body.answer_3);
-			countArr.push(0);
+		var numAnswers = req.body.numAnswers;
+		var answerVal;
+
+		for(var i = 1; i <= numAnswers; i++) {
+			console.log(req.body['answer_' + i]);
+			if(req.body['answer_' + i]) {
+				choiceArr.push(req.body['answer_' + i]);
+				countArr.push(0);
+			}
 		}
 
 		var newPoll = new Poll({
