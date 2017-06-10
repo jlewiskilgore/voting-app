@@ -21,6 +21,12 @@ body {
 	border-radius: 10px;
 }
 
+#view-poll input {
+	height: 75px;
+	width: 200px;
+	border-radius: 10px;
+}
+
 div.form {
 	display: block;
 	text-align: center;
@@ -36,4 +42,10 @@ form {
 
 #poll-question {
 	width: 400px;
+}
+
+#poll-results {
+	width: 400px;
+	display: block;
+	margin: 0 auto;
 }
