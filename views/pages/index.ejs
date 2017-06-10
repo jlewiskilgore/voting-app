@@ -18,7 +18,10 @@
         <input type="hidden" name="id" value="<%= pollList[i]._id %>">
         <input type="hidden" name="question" value="<%= pollList[i].question %>">
         <input type="hidden" name="choices" value="<%= pollList[i].choices %>">
-    	  <input type="submit" value="<%= pollList[i].question %>">
+    	  <div>
+          <input type="submit" value="<%= pollList[i].question %>">
+          <input type="submit" id="delete-poll-btn" value="Delete" formaction="/deletePoll/<%= pollList[i]._id %>" formmethod="post">
+        </div>
       </form>
     <br>
     <% } %>

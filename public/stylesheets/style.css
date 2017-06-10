@@ -21,6 +21,11 @@ body {
 	border-radius: 10px;
 }
 
+#poll-list #delete-poll-btn {
+	height: 50px;
+	width: 75px;
+}
+
 #view-poll input {
 	height: 75px;
 	width: 200px;

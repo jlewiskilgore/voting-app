@@ -114,6 +114,24 @@ module.exports = function(app, env) {
 		});
 	});
 
+	app.post('/deletePoll/:pollId', function(req, res) {
+		var db = req.db;
+		var polls = db.collection('polls');
+
+		var pollId = req.params.pollId;
+
+		console.log(pollId);
+
+		polls.remove({ "_id": ObjectId(pollId) }, function(err) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				res.redirect('/');
+			}
+		});
+	});
+
 	app.get('*', function(req, res) {
 		res.redirect('/');
 	});
