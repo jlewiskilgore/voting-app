@@ -3,7 +3,6 @@ var routes = require('./src/routes/routes.js');
 
 var app = express();
 
-//var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
 var dbURL = process.env.MONGOLAB_URI;
 
