@@ -32,6 +32,11 @@ body {
 	border-radius: 10px;
 }
 
+#tweet-poll {
+	display: block;
+	text-align: center;
+}
+
 div.form {
 	display: block;
 	text-align: center;
