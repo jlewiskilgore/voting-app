@@ -2,6 +2,15 @@
 <head>
   <title>View Poll</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script>
+    function tweetPoll() {
+      console.log("tweet poll...");
+      var pollQuestion = "<%- pollQuestion %>";
+      console.log(pollQuestion);
+      var tweetURL = 'http://twitter.com/intent/tweet?text='+pollQuestion;
+      window.open(tweetURL);
+    }
+  </script>
   <% include ../partials/header %>
 </head>
 <body>
@@ -20,5 +29,7 @@
       <br>
     <% } %>
   </div>
+  <br>
+  <button type="button" onclick="tweetPoll()">Tweet This Poll!</button>
 </body>
 </html>
