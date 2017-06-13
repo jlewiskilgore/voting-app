@@ -1,7 +1,9 @@
 var express = require('express');
 var routes = require('./src/routes/routes.js');
+var passport = require('passport');
 
 var app = express();
+require('./auth/passport')(passport);
 
 var mongoose = require('mongoose');
 var dbURL = process.env.MONGOLAB_URI;
@@ -26,7 +28,10 @@ db.once('open', function() {
 
 	app.set('view engine', 'ejs');
 
-	routes(app, process.env);
+	app.use(passport.initialize());
+	app.use(passport.session());
+
+	routes(app, process.env, passport);
 
 	app.set('port', (process.env.PORT || 8080));
 
