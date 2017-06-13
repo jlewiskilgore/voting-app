@@ -8,9 +8,10 @@ module.exports = function(passport) {
 		callbackURL: config.githubConfig.GITHUB_CLIENT_URL
 		},
 		function(accessToken, refreshToken, profile, cb) {
-			User.findOrCreate({ githubId: profile.id }, function(err, user) {
+			/*User.findOrCreate({ githubId: profile.id }, function(err, user) {
 				return cb(err, user);
-			});
+			}); */
+			console.log(profile);
 		}
 	));
 };

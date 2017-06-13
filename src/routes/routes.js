@@ -76,6 +76,31 @@ module.exports = function(app, env, passport) {
 
 	});
 
+	app.get('/viewPoll/:pollId', function(req, res) {
+		var db = req.db;
+		var polls = db.collection('polls');
+
+		var pollId = req.params.pollId;
+
+		polls.findOne({ "_id": ObjectId(pollId) }, function(err, result) {
+			if(err) {
+				console.log(err);
+			}
+			else if(result) {
+				res.render('pages/viewPoll', 
+					{ 
+						pollId: pollId,
+						pollQuestion: result.question,
+						pollChoices: result.choices
+					});
+			}
+			else {
+				console.log("this poll does not exist...");
+				res.redirect('/');
+			}
+		});
+	});
+
 	app.post('/viewPoll', function(req, res) {
 		var choices = req.body.choices.split(',');
 
