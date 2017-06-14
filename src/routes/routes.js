@@ -148,7 +148,12 @@ module.exports = function(app, env, passport) {
 				console.log(err);
 			}
 			else {
-				res.render('pages/viewResults', { question: result.question, choices: result.choices, choiceCounts: result.choiceCounts });
+				res.render('pages/viewResults', 
+					{ 
+						question: result.question, 
+						choices: result.choices, 
+						choiceCounts: result.choiceCounts 
+					});
 			}
 		});
 	});

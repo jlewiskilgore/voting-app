@@ -6,8 +6,10 @@
     function tweetPoll() {
       console.log("tweet poll...");
       var pollQuestion = "<%- pollQuestion %>";
+      var pollId = "<%- pollId %>";
+      var pollUrl = "http%3A%2F%2Flocalhost%3A8080%2FviewPoll%2F" + pollId;
       console.log(pollQuestion);
-      var tweetURL = 'http://twitter.com/intent/tweet?text='+pollQuestion;
+      var tweetURL = 'http://twitter.com/intent/tweet?text='+pollQuestion+escape('\n')+'Vote at: &url='+pollUrl;
       window.open(tweetURL);
     }
   </script>
