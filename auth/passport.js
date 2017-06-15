@@ -10,8 +10,6 @@ passport.use(new GitHubStrategy({
 	callbackURL: config.githubConfig.GITHUB_CLIENT_URL
 	},
 	function(accessToken, refreshToken, profile, done) {
-		console.log(profile);
-		
 		var searchQuery = {
 			username: profile.login
 		};
@@ -30,6 +28,8 @@ passport.use(new GitHubStrategy({
 				return done(err);
 			}
 			else {
+				console.log(profile);
+				console.log(user);
 				return done(null, user);
 			}
 		});

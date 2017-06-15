@@ -59,3 +59,18 @@ form {
 	display: block;
 	margin: 0 auto;
 }
+
+#header-block {
+	display: inline-block;
+	width: 100%;
+}
+
+#top-navbar {
+	float: left;
+	padding-left: 50px;
+}
+
+#user-session-action {
+	float: right;
+	padding-right: 50px;
+}
