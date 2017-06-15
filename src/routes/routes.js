@@ -1,5 +1,6 @@
 var path = require('path');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var Poll = require('../../models/poll.js');
 var ObjectId = require('mongodb').ObjectId;
 var passport = require('../../auth/passport.js');

@@ -1,9 +1,9 @@
 var express = require('express');
+var session = require('express-session');
 var routes = require('./src/routes/routes.js');
 var passport = require('passport');
 
 var app = express();
-require('./auth/passport')(passport);
 
 var mongoose = require('mongoose');
 var dbURL = process.env.MONGOLAB_URI;
@@ -28,6 +28,11 @@ db.once('open', function() {
 
 	app.set('view engine', 'ejs');
 
+	app.use(session({
+		secret: 'keyboard cat',
+		resave: true,
+		saveUninitialized: true
+	}));
 	app.use(passport.initialize());
 	app.use(passport.session());
 

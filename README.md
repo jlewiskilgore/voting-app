@@ -23,3 +23,11 @@ see and vote on other's polls.
 see results of polls in chart form.
 
 7. An authenticated user, can create new options on polls.
+
+
+===========================================================
+Sources:
+
+Used as a tutorial to help set up Github/Passport auth:
+
+http://mherman.org/blog/2015/09/26/social-authentication-in-node-dot-js-with-passport/#.WUHSsWgrJEY
