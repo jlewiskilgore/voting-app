@@ -11,11 +11,17 @@ module.exports = function(app, env, passport) {
 	app.use(bodyParser.json());
 
 	app.get('/', function(req, res) {
+		console.log(req.user);
+
 		var db = req.db;
 		var polls = db.collection('polls');
 
 		polls.find().limit(25).toArray(function(error, result) {
-			res.render('pages/index', { pollList: result });
+			res.render('pages/index', 
+				{ 
+					pollList: result,
+					user: req.user 
+				});
 		});
 	});
 
@@ -35,7 +41,9 @@ module.exports = function(app, env, passport) {
 	});
 
 	app.get('/createPoll', function(req, res) {
-		res.render('pages/addPoll');
+		res.render('pages/addPoll', {
+			user: req.user
+		});
 	});
 
 	app.post('/createPoll', function(req, res) {
@@ -94,7 +102,8 @@ module.exports = function(app, env, passport) {
 					{ 
 						pollId: pollId,
 						pollQuestion: result.question,
-						pollChoices: result.choices
+						pollChoices: result.choices,
+						user: req.user
 					});
 			}
 			else {
@@ -111,7 +120,8 @@ module.exports = function(app, env, passport) {
 			{ 
 				pollId: req.body.id,
 				pollQuestion: req.body.question,
-				pollChoices: choices
+				pollChoices: choices,
+				user: req.user
 			});
 	});
 
@@ -155,7 +165,8 @@ module.exports = function(app, env, passport) {
 					{ 
 						question: result.question, 
 						choices: result.choices, 
-						choiceCounts: result.choiceCounts 
+						choiceCounts: result.choiceCounts,
+						user: req.user 
 					});
 			}
 		});

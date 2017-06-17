@@ -73,4 +73,14 @@ form {
 #user-session-action {
 	float: right;
 	padding-right: 50px;
+	white-space: nowrap;
+}
+
+#user-welcome {
+	float:left;
+	padding-right: 25px;
+}
+
+#logout-button {
+	float:left;
 }

@@ -3,11 +3,16 @@
 		<a href="/">Home</a>
 	</div>
 	<div id="user-session-action">
-		<form action="/auth/github" method="get">
-	    	<input type="submit" value="Login with GitHub">
-	    </form>
-	    <form action="/logout" method="get">
-	    	<input type="submit" value="Logout">
-	    </form>
+		<% if(!user) { %>
+			<form action="/auth/github" method="get">
+		    	<input type="submit" value="Login with GitHub">
+		    </form>
+		<% } %>
+	    <% if(user) { %>
+		    <form action="/logout" method="get">
+		    	<div id="user-welcome">Welcome <%= user.username %></div>
+		    	<input id="logout-button" type="submit" value="Logout">
+		    </form>
+		<% } %>
 	</div>
 </div>
