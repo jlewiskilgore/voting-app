@@ -32,6 +32,23 @@ module.exports = function(app, env, passport) {
 			res.redirect('/');
 		});
 
+	app.get('/logout', function(req, res) {
+		console.log('logout!');
+		req.logout();
+		res.redirect('/');
+		/*
+		req.session.destroy(function(err) {
+			if(err) {
+				console.log(err);
+			}
+			else {
+				console.log(req.session);
+				res.redirect('/');
+			}
+		});
+		*/
+	});
+
 	app.get('/createPoll', function(req, res) {
 		res.render('pages/addPoll');
 	});
