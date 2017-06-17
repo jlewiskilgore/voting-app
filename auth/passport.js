@@ -11,11 +11,11 @@ passport.use(new GitHubStrategy({
 	},
 	function(accessToken, refreshToken, profile, done) {
 		var searchQuery = {
-			username: profile.login
+			username: profile.username
 		};
 
 		var updates = {
-			username: profile.login,
+			username: profile.username,
 			userId: profile.id
 		};
 
@@ -28,8 +28,6 @@ passport.use(new GitHubStrategy({
 				return done(err);
 			}
 			else {
-				console.log(profile);
-				console.log(user);
 				return done(null, user);
 			}
 		});
@@ -39,6 +37,3 @@ passport.use(new GitHubStrategy({
 init();
 
 module.exports = passport;
-
-//profile.login
-//profile.id

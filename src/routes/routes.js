@@ -19,10 +19,6 @@ module.exports = function(app, env, passport) {
 		});
 	});
 
-	app.get('/login', function(req, res) {
-		res.render('pages/login');
-	});
-
 	app.get('/auth/github',
 		passport.authenticate('github'));
 
@@ -36,17 +32,6 @@ module.exports = function(app, env, passport) {
 		console.log('logout!');
 		req.logout();
 		res.redirect('/');
-		/*
-		req.session.destroy(function(err) {
-			if(err) {
-				console.log(err);
-			}
-			else {
-				console.log(req.session);
-				res.redirect('/');
-			}
-		});
-		*/
 	});
 
 	app.get('/createPoll', function(req, res) {
