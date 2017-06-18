@@ -56,7 +56,7 @@ module.exports = function(app, env, passport) {
 		var polls = db.collection('polls');
 
 		var pollQuestion = req.body.question;
-		var pollOwner = 'testAdmin'; // To be collected through user token info
+		var pollOwner = req.user.username;
 		var choiceArr = [];
 		var countArr = [];
 
