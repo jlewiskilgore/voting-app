@@ -8,9 +8,11 @@
   <h1 id="page-title">Voting App</h1>
   <br>
   <br>
-  <div id="create-poll-button">
-    <button onclick="window.location.href='/createPoll'">Create a New Poll</a>
-  </div>
+  <% if(user) { %>
+    <div id="create-poll-button">
+      <button onclick="window.location.href='/createPoll'">Create a New Poll</a>
+    </div>
+  <% } %>
   <br>
   <br>
   <div id="poll-list">

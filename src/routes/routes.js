@@ -41,9 +41,14 @@ module.exports = function(app, env, passport) {
 	});
 
 	app.get('/createPoll', function(req, res) {
-		res.render('pages/addPoll', {
-			user: req.user
-		});
+		if(req.user) {
+			res.render('pages/addPoll', {
+				user: req.user
+			});
+		}
+		else {
+			res.redirect('/');
+		}
 	});
 
 	app.post('/createPoll', function(req, res) {
