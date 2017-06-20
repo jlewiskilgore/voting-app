@@ -21,9 +21,12 @@
         <input type="hidden" name="id" value="<%= pollList[i]._id %>">
         <input type="hidden" name="question" value="<%= pollList[i].question %>">
         <input type="hidden" name="choices" value="<%= pollList[i].choices %>">
+        <input type="hidden" name="owner" value="<%= pollList[i].owner %>">
     	  <div>
           <input type="submit" value="<%= pollList[i].question %>">
-          <input type="submit" id="delete-poll-btn" value="Delete" formaction="/deletePoll/<%= pollList[i]._id %>" formmethod="post">
+          <% if(username == pollList[i].owner) { %>
+            <input type="submit" id="delete-poll-btn" value="Delete" formaction="/deletePoll" formmethod="post">
+          <% } %>
         </div>
       </form>
     <br>

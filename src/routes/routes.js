@@ -11,16 +11,21 @@ module.exports = function(app, env, passport) {
 	app.use(bodyParser.json());
 
 	app.get('/', function(req, res) {
-		console.log(req.user);
 
 		var db = req.db;
 		var polls = db.collection('polls');
+		var loggedInUser;
+
+		if(req.user) {
+			loggedInUser = req.user.username;
+		}
 
 		polls.find().limit(25).toArray(function(error, result) {
 			res.render('pages/index', 
 				{ 
 					pollList: result,
-					user: req.user 
+					user: req.user,
+					username: loggedInUser
 				});
 		});
 	});
@@ -64,7 +69,6 @@ module.exports = function(app, env, passport) {
 		var answerVal;
 
 		for(var i = 1; i <= numAnswers; i++) {
-			console.log(req.body['answer_' + i]);
 			if(req.body['answer_' + i]) {
 				choiceArr.push(req.body['answer_' + i]);
 				countArr.push(0);
@@ -177,22 +181,22 @@ module.exports = function(app, env, passport) {
 		});
 	});
 
-	app.post('/deletePoll/:pollId', function(req, res) {
+	app.post('/deletePoll', function(req, res) {
 		var db = req.db;
 		var polls = db.collection('polls');
 
-		var pollId = req.params.pollId;
+		var pollId = req.body.id;
+		var pollOwner = req.body.owner;
 
-		console.log(pollId);
+		if(req.user && pollOwner == req.user.username) {
+			polls.remove({ "_id": ObjectId(pollId) }, function(err) {
+				if(err) {
+					console.log(err);
+				}
+			});
+		}
 
-		polls.remove({ "_id": ObjectId(pollId) }, function(err) {
-			if(err) {
-				console.log(err);
-			}
-			else {
-				res.redirect('/');
-			}
-		});
+		res.redirect('/');
 	});
 
 	app.get('*', function(req, res) {
