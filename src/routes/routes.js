@@ -122,18 +122,6 @@ module.exports = function(app, env, passport) {
 		});
 	});
 
-	app.post('/viewPoll', function(req, res) {
-		var choices = req.body.choices.split(',');
-
-		res.render('pages/viewPoll', 
-			{ 
-				pollId: req.body.id,
-				pollQuestion: req.body.question,
-				pollChoices: choices,
-				user: req.user
-			});
-	});
-
 	app.post('/answerPoll', function(req, res) {
 		var db = req.db;
 		var polls = db.collection('polls');
