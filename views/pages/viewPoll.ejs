@@ -7,7 +7,7 @@
       console.log("tweet poll...");
       var pollQuestion = "<%- pollQuestion %>";
       var pollId = "<%- pollId %>";
-      var pollUrl = "http%3A%2F%2Flocalhost%3A8080%2FviewPoll%2F" + pollId;
+      var pollUrl = "http%3A%2F%2Flocalhost%3A8080%2FviewPoll%2F" + pollId; // TODO: Update this will live URL
       console.log(pollQuestion);
       var tweetURL = 'http://twitter.com/intent/tweet?text='+pollQuestion+escape('\n')+'Vote at: &url='+pollUrl;
       window.open(tweetURL);
@@ -32,8 +32,10 @@
     <% } %>
   </div>
   <br>
-  <div id="tweet-poll">
-    <button type="button" onclick="tweetPoll()">Tweet This Poll!</button>
-  </div>
+  <% if(username) { %>
+    <div id="tweet-poll">
+      <button type="button" onclick="tweetPoll()">Tweet This Poll!</button>
+    </div>
+  <% } %>
 </body>
 </html>

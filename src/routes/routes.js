@@ -14,6 +14,7 @@ module.exports = function(app, env, passport) {
 
 		var db = req.db;
 		var polls = db.collection('polls');
+		
 		var loggedInUser;
 
 		if(req.user) {
@@ -102,6 +103,12 @@ module.exports = function(app, env, passport) {
 
 		var pollId = req.params.pollId;
 
+		var loggedInUser;
+
+		if(req.user) {
+			loggedInUser = req.user.username;
+		}
+
 		polls.findOne({ "_id": ObjectId(pollId) }, function(err, result) {
 			if(err) {
 				console.log(err);
@@ -112,7 +119,8 @@ module.exports = function(app, env, passport) {
 						pollId: pollId,
 						pollQuestion: result.question,
 						pollChoices: result.choices,
-						user: req.user
+						user: req.user,
+						username: loggedInUser
 					});
 			}
 			else {
