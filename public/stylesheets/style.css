@@ -10,9 +10,18 @@ body {
 	text-align: center;
 }
 
-#poll-list, #view-poll {
+#view-poll {
 	display: block;
 	text-align: center;
+}
+
+#poll-list {
+	margin: 0 auto;
+	display: table;
+}
+
+#poll-btn #delete-poll-btn {
+	display: table-cell;
 }
 
 #poll-list input {
@@ -24,11 +33,12 @@ body {
 #poll-list #delete-poll-btn {
 	height: 50px;
 	width: 75px;
+	margin-left: 20px;
 }
 
 #view-poll input {
-	height: 75px;
-	width: 200px;
+	height: 25px;
+	width: 300px;
 	border-radius: 10px;
 }
 
