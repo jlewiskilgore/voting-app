@@ -184,7 +184,7 @@ module.exports = function(app, env, passport) {
 		var pollId = req.body.pollId;
 		var newPollOption = req.body.newPollOption;
 
-		if(newPollOption) {
+		if(req.user && newPollOption) {
 			polls.findOne({ "_id": ObjectId(pollId) }, function(err, result) {
 				if(err) {
 					console.log(err);
