@@ -177,6 +177,36 @@ module.exports = function(app, env, passport) {
 		});
 	});
 
+	app.post('/editPoll', function(req, res) {
+		var db = req.db;
+		var polls = db.collection('polls');
+
+		var pollId = req.body.pollId;
+		var newPollOption = req.body.newPollOption;
+
+		if(newPollOption) {
+			polls.findOne({ "_id": ObjectId(pollId) }, function(err, result) {
+				if(err) {
+					console.log(err);
+				}
+				else {
+					var choices = result.choices;
+					var choiceCounts = result.choiceCounts;
+
+					choices.push(newPollOption);
+					choiceCounts.push(0);
+
+					polls.update(
+						{ "_id": ObjectId(pollId) },
+						{ $set: { "choices": choices, "choiceCounts": choiceCounts } },
+						{ upsert: true}
+					);
+					res.redirect('/viewPoll/' + pollId);
+				}
+			});
+		}
+	});
+
 	app.post('/deletePoll', function(req, res) {
 		var db = req.db;
 		var polls = db.collection('polls');
