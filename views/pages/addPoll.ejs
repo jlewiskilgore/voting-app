@@ -31,21 +31,23 @@
   <% include ../partials/header %>
 </head>
 <body>
-  <h1 id="page-title">Create a New Poll</h1>
-  <div class="form">
-	  <form action="/createPoll" method="post">
-	    What is your Question? <input id="poll-question" type="text" name="question"></input>
-	    <br>
-	    <br>
-	    <div id="poll-answers">
-		  <label>Answer 1: </label><input type="text" name="answer_1"></input>
-		  <br>
-	    </div>
-	    <input type="button" onclick="addNewAnswer()" value="add"></input>
-	    <br>
-	    <input id="num-answers" type="hidden" name="numAnswers" value="1"></input>
-	    <input type="submit">
-	  </form>
+  <div id="page-container">
+    <h1 id="page-title">Create a New Poll</h1>
+    <div class="form">
+  	  <form action="/createPoll" method="post">
+  	    What is your Question? <input id="poll-question" type="text" name="question"></input>
+  	    <br>
+  	    <br>
+  	    <div id="poll-answers">
+  		  <label>Answer 1: </label><input type="text" name="answer_1"></input>
+  		  <br>
+  	    </div>
+  	    <input type="button" onclick="addNewAnswer()" value="add"></input>
+  	    <br>
+  	    <input id="num-answers" type="hidden" name="numAnswers" value="1"></input>
+  	    <input type="submit">
+  	  </form>
+    </div>
   </div>
 </body>
 </html>

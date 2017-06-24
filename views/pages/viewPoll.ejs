@@ -16,33 +16,35 @@
   <% include ../partials/header %>
 </head>
 <body>
-  <h1 id="page-title">View Poll</h1>
-  <br>
-  <br>
-  <br>
-  <div id="view-poll">
-    <h2><%= pollQuestion %></h2>
-    <% for (var i=0; i < pollChoices.length; i++) { %>
-      <form action="/answerPoll" method="post">
-        <input type="hidden" name="pollId" value="<%= pollId %>">
-        <input type="hidden" name="choiceIndex" value="<%= i %>">
-        <input type="submit" value="<%= pollChoices[i] %>">
-      </form>
-      <br>
+  <div id="page-container">
+    <h1 id="page-title">View Poll</h1>
+    <br>
+    <br>
+    <br>
+    <div id="view-poll">
+      <h2><%= pollQuestion %></h2>
+      <% for (var i=0; i < pollChoices.length; i++) { %>
+        <form action="/answerPoll" method="post">
+          <input type="hidden" name="pollId" value="<%= pollId %>">
+          <input type="hidden" name="choiceIndex" value="<%= i %>">
+          <input type="submit" value="<%= pollChoices[i] %>">
+        </form>
+        <br>
+      <% } %>
+      <% if(user) { %>
+        <form id="edit-poll-form" action="/editPoll" method="post">
+          <input type="text" name="newPollOption" value="">
+          <input type="hidden" name="pollId" value = "<%= pollId %>">
+          <input id="new-option-btn" type="submit" value="Save New Poll Option">
+        </form>
+      </div>
     <% } %>
-    <% if(user) { %>
-      <form id="edit-poll-form" action="/editPoll" method="post">
-        <input type="text" name="newPollOption" value="">
-        <input type="hidden" name="pollId" value = "<%= pollId %>">
-        <input id="new-option-btn" type="submit" value="Save New Poll Option">
-      </form>
-    </div>
-  <% } %>
-  <br>
-  <% if(username) { %>
-    <div id="tweet-poll">
-      <button type="button" onclick="tweetPoll()">Tweet This Poll!</button>
-    </div>
-  <% } %>
+    <br>
+    <% if(username) { %>
+      <div id="tweet-poll">
+        <button type="button" onclick="tweetPoll()">Tweet This Poll!</button>
+      </div>
+    <% } %>
+  </div>
 </body>
 </html>

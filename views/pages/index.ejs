@@ -5,30 +5,32 @@
   <% include ../partials/header %>
 </head>
 <body>
-  <h1 id="page-title">Voting App</h1>
-  <br>
-  <br>
-  <% if(user) { %>
-    <div id="create-poll-button">
-      <button onclick="window.location.href='/createPoll'">Create a New Poll</a>
-    </div>
-  <% } %>
-  <br>
-  <br>
-  <div id="poll-list">
-    <% for (var i=0; i < pollList.length; i++) { %>
-      <form action="/viewPoll/<%= pollList[i]._id %>" method="get">
-    	  <div>
-          <input type="submit" id="poll-btn" value="<%= pollList[i].question %>">
-          <input type="hidden" name="id" value="<%= pollList[i]._id %>">
-          <input type="hidden" name="owner" value="<%= pollList[i].owner %>">
-          <% if(username == pollList[i].owner) { %>
-            <input type="submit" id="delete-poll-btn" value="Delete" formaction="/deletePoll" formmethod="post">
-          <% } %>
-        </div>
-      </form>
+  <div id="page-container">
+    <h1 id="page-title">Voting App</h1>
     <br>
+    <br>
+    <% if(user) { %>
+      <div id="create-poll-button">
+        <button onclick="window.location.href='/createPoll'">Create a New Poll</a>
+      </div>
     <% } %>
-  </div>
+    <br>
+    <br>
+    <div id="poll-list">
+      <% for (var i=0; i < pollList.length; i++) { %>
+        <form action="/viewPoll/<%= pollList[i]._id %>" method="get">
+      	  <div>
+            <input type="submit" id="poll-btn" value="<%= pollList[i].question %>">
+            <input type="hidden" name="id" value="<%= pollList[i]._id %>">
+            <input type="hidden" name="owner" value="<%= pollList[i].owner %>">
+            <% if(username == pollList[i].owner) { %>
+              <input type="submit" id="delete-poll-btn" value="Delete" formaction="/deletePoll" formmethod="post">
+            <% } %>
+          </div>
+        </form>
+      <br>
+      <% } %>
+    </div>
+  </dvi>
 </body>
 </html>
