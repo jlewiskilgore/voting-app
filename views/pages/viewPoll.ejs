@@ -31,10 +31,10 @@
       <br>
     <% } %>
     <% if(user) { %>
-      <form action="/editPoll" method="post">
+      <form id="edit-poll-form" action="/editPoll" method="post">
         <input type="text" name="newPollOption" value="">
         <input type="hidden" name="pollId" value = "<%= pollId %>">
-        <input type="submit" value="Save New Poll Option">
+        <input id="new-option-btn" type="submit" value="Save New Poll Option">
       </form>
     </div>
   <% } %>

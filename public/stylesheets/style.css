@@ -2,6 +2,36 @@ body {
 	background-color: steelblue;
 }
 
+#header-block {
+	background-color: lightgrey;
+	height: 50px;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+#top-navbar {
+	float: left;
+	padding-top: 15px;
+	padding-left: 50px;
+}
+
+#user-session-action {
+	float: right;
+	padding-top: 15px;
+	padding-right: 50px;
+	white-space: nowrap;
+}
+
+#user-welcome {
+	float:left;
+	padding-right: 25px;
+}
+
+#logout-button {
+	float:left;
+}
+
 #create-poll-button {
 	text-align: center;
 }
@@ -42,6 +72,14 @@ body {
 	border-radius: 10px;
 }
 
+#edit-poll-form {
+	margin-left: 150px;
+}
+
+#view-poll #new-option-btn {
+	width: 150px;
+}
+
 #tweet-poll {
 	display: block;
 	text-align: center;
@@ -68,29 +106,4 @@ form {
 	width: 400px;
 	display: block;
 	margin: 0 auto;
-}
-
-#header-block {
-	display: inline-block;
-	width: 100%;
-}
-
-#top-navbar {
-	float: left;
-	padding-left: 50px;
-}
-
-#user-session-action {
-	float: right;
-	padding-right: 50px;
-	white-space: nowrap;
-}
-
-#user-welcome {
-	float:left;
-	padding-right: 25px;
-}
-
-#logout-button {
-	float:left;
 }
